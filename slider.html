@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #slider {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .slide {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .slide img {
+        width: 100%;
+        height:60%;
+        object-fit: cover;
+      }
+
+      button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 0;
+        background-color: transparent;
+        font-weight: bold;
+        font-size: 70px;
+        color: rgba(165, 124, 124, 0.802);
+      }
+      #nextBtn {
+        right: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="slider">
+      <div class="slide">
+        <img src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-3foodgroups_fruits_detailfeature.jpg?sfvrsn=64942d53_4" alt="Slide 1" />
+      </div>
+      <div class="slide">
+        <img src="https://www.shutterstock.com/shutterstock/photos/2476606071/display_1500/stock-photo-variety-of-fruits-and-berries-on-a-wooden-table-the-table-fills-most-of-the-frame-and-the-fruits-2476606071.jpg" alt="Slide 2" />
+      </div>
+      <div class="slide">
+        <img src="https://img.freepik.com/free-photo/freshness-variety-healthy-fruits-wooden-table-generated-by-artificial-intelligence_25030-65197.jpg" alt="Slide 3" />
+      </div>
+      <div class="slide">
+        <img src="https://www.euroschoolindia.com/wp-content/uploads/2023/10/importance-of-eating-a-variety-of-fruits-for-kids-health-jpg.webp" alt="Slide 4" />
+      </div>
+      <button id="prevBtn">&#8249;</button>
+      <button id="nextBtn">&#8250;</button>
+    </div>
+
+    <script>
+      const slider = document.getElementById("slider");
+      const slides = document.getElementsByClassName("slide");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      let currentSlide = 0;
+
+      
+      function showSlide() {
+       
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+         slides[currentSlide].style.display = "block";
+      }
+
+      
+      function prevSlide() {
+        currentSlide--;
+        if (currentSlide < 0) {
+          currentSlide = slides.length - 1;
+        }
+        showSlide();
+      }
+
+      
+      function nextSlide() {
+        currentSlide++;
+        if (currentSlide >= slides.length) {
+          currentSlide = 0;
+        }
+        showSlide();
+      }
+
+      
+      prevBtn.addEventListener("click", prevSlide);
+      nextBtn.addEventListener("click", nextSlide);
+
+      
+      showSlide();
+    </script>
+  </body>
+</html>
